@@ -1531,6 +1531,15 @@ body {
     font-weight: 500;
 }
 
+.form-success-message {
+    background-color: #f0fdf4;
+    color: #166534;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
 .portal-submit-btn {
     width: 100%;
     background-color: var(--portal-accent);
@@ -1980,7 +1989,7 @@ a.blog-card {
 }
 
 /* --- EMERGENCY CONTACTS in Community Hub --- */
-.emergency-contact-container {
+.emergency-contact-container, .suggest-resource-container {
     background-color: var(--card-white);
     border: 1px solid var(--portal-border);
     border-radius: 12px;
@@ -2073,13 +2082,16 @@ a.blog-card {
     border: none;
     box-shadow: none;
 }
-.emergency-contact-form .form-grid {
+.emergency-contact-form .form-grid, .suggest-resource-container .form-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
+}
+.suggest-resource-container .form-grid {
+    margin-bottom: 1.5rem;
 }
 @media (min-width: 600px) {
-    .emergency-contact-form .form-grid {
+    .emergency-contact-form .form-grid, .suggest-resource-container .form-grid {
         grid-template-columns: 1fr 1fr;
     }
     .emergency-contact-form .form-grid .form-group {

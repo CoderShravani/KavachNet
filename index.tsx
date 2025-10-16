@@ -144,6 +144,7 @@ const CATEGORIES: { name: Category; icon: React.ReactNode; description: string }
 ];
 
 const VOLUNTEER_SKILLS = ['Counseling', 'Medical (Basic First Aid)', 'Logistics & Coordination', 'Community Outreach', 'Administrative Support', 'Technical Support'];
+const RESOURCE_TYPES: ResourceType[] = ['Hotline', 'Shelter', 'Hospital', 'Counselor', 'Food Bank', 'Relief Center'];
 
 
 // --- HOOKS ---
@@ -1544,6 +1545,104 @@ function EmergencyContactForm({ onSave }: { onSave: (contact: Omit<EmergencyCont
     );
 }
 
+// Component for the new resource suggestion form
+function SuggestResourceForm() {
+    const [formData, setFormData] = useState({
+        name: '',
+        category: 'Mental Health Crisis' as Category,
+        type: 'Hotline' as ResourceType,
+        contact: '',
+        openHours: '',
+        description: ''
+    });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!formData.name || !formData.contact || !formData.description) {
+            setError('Please fill out all required fields: Name, Contact, and Description.');
+            return;
+        }
+        setLoading(true);
+        setError('');
+        setSuccess('');
+        try {
+            const response = await fetch(`${API_BASE_URL}/resources/suggest`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.error || 'Failed to submit resource.');
+            }
+            setSuccess('Thank you! Your suggestion has been submitted for review.');
+            setFormData({ // Reset form
+                name: '',
+                category: 'Mental Health Crisis',
+                type: 'Hotline',
+                contact: '',
+                openHours: '',
+                description: ''
+            });
+        } catch (err: any) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <form className="community-form" onSubmit={handleSubmit}>
+            {error && <p className="form-error-message">{error}</p>}
+            {success && <p className="form-success-message">{success}</p>}
+            
+            <div className="form-group">
+                <label htmlFor="name">Resource Name</label>
+                <input id="name" name="name" type="text" value={formData.name} onChange={handleChange} required placeholder="e.g., Downtown Community Food Bank" />
+            </div>
+            <div className="form-grid">
+                <div className="form-group">
+                    <label htmlFor="category">Category</label>
+                    <select id="category" name="category" value={formData.category} onChange={handleChange}>
+                        {CATEGORIES.map(cat => <option key={cat.name} value={cat.name}>{cat.name}</option>)}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="type">Resource Type</label>
+                    <select id="type" name="type" value={formData.type} onChange={handleChange}>
+                        {RESOURCE_TYPES.map(type => <option key={type} value={type}>{type}</option>)}
+                    </select>
+                </div>
+            </div>
+            <div className="form-grid">
+                <div className="form-group">
+                    <label htmlFor="contact">Contact Info (Phone or Website)</label>
+                    <input id="contact" name="contact" type="text" value={formData.contact} onChange={handleChange} required placeholder="e.g., 555-123-4567" />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="openHours">Open Hours</label>
+                    <input id="openHours" name="openHours" type="text" value={formData.openHours} onChange={handleChange} placeholder="e.g., Mon-Fri 9am-5pm" />
+                </div>
+            </div>
+            <div className="form-group">
+                <label htmlFor="description">Description</label>
+                <textarea id="description" name="description" value={formData.description} onChange={handleChange} rows={4} required placeholder="Briefly describe the services offered." />
+            </div>
+            <p className="form-hint">Our team will verify the information before adding it to our public network. Thank you for helping our community!</p>
+            <button type="submit" className="portal-submit-btn" disabled={loading}>
+                {loading ? 'Submitting...' : 'Submit for Review'}
+            </button>
+        </form>
+    );
+}
+
 function CommunityHubPage({ onBack }: { onBack: () => void }) {
     const [pollChoice, setPollChoice] = useState('');
     const [pollSubmitted, setPollSubmitted] = useState(false);
@@ -1620,6 +1719,14 @@ function CommunityHubPage({ onBack }: { onBack: () => void }) {
                                 </div>
                             </a>
                         ))}
+                    </div>
+                </section>
+                
+                <section className="hub-section">
+                    <h2>Suggest a New Resource</h2>
+                    <p className="hub-section-intro">Know a helpful resource? Share it with the community. Every suggestion helps us build a stronger support network.</p>
+                    <div className="suggest-resource-container">
+                        <SuggestResourceForm />
                     </div>
                 </section>
 

@@ -281,6 +281,37 @@ app.delete("/resources/:id", verifyToken, isAdmin, async (req, res) => {
     }
 });
 
+// --- RESOURCE SUGGESTION (PUBLIC) ---
+app.post("/resources/suggest", async (req, res) => {
+    try {
+        const { name, category, type, contact, openHours, description } = req.body;
+        
+        // Basic server-side validation
+        if (!name || !category || !type || !contact || !description) {
+            return res.status(400).send({ error: "Missing required fields." });
+        }
+
+        const newResourceSuggestion = {
+            name, category, type, contact, openHours, description,
+            verified: false,
+            status: 'pending', // for admin review
+            rating: 0,
+            source: 'CommunitySuggestion',
+            submittedAt: admin.firestore.FieldValue.serverTimestamp(),
+            // lat/lon will be added by an admin during verification
+            lat: null,
+            lon: null,
+        };
+
+        const docRef = await db.collection('resources').add(newResourceSuggestion);
+        
+        return res.status(201).send({ message: "Resource suggestion submitted successfully.", id: docRef.id });
+    } catch (error) {
+        console.error("Error submitting resource suggestion:", error);
+        return res.status(500).send({ error: "Failed to submit resource suggestion." });
+    }
+});
+
 // --- FEEDBACK ROUTES ---
 
 // CREATE feedback (Public)
