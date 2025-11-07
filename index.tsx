@@ -120,17 +120,32 @@ interface EmergencyContact {
 
 type EmotionTone = 'calm' | 'anxious' | 'distressed' | 'hopeful' | 'default';
 
-// Mock data updated with descriptions and verified status. Now serves as a fallback.
+// Mock data updated to Juhu, Mumbai, India. Serves as a primary data source for the demo.
 const MOCK_SUPPORT_CENTERS: SupportCenter[] = [
-  { id: 'mock-1', name: 'MindWell Counseling', category: 'Mental Health Crisis', lat: 34.0522, lon: -118.2437, contact: '1-800-273-8255', type: 'Counselor', openHours: 'Mon-Fri 9am-5pm', rating: 4.8, description: 'Provides professional counseling for anxiety, depression, and trauma. Sliding scale fees available. All counselors are licensed professionals.', verified: true },
-  { id: 'mock-2', name: 'Safe Haven Shelter', category: 'Domestic Violence', lat: 34.0600, lon: -118.2500, contact: '1-800-799-7233', type: 'Shelter', openHours: '24/7', rating: 4.9, description: 'A secure shelter for individuals and families fleeing domestic violence. Offers legal aid, counseling, and transitional housing support.', verified: true },
-  { id: 'mock-3', name: 'City Central Hospital', category: 'Medical Emergency', lat: 34.0550, lon: -118.2450, contact: '911', type: 'Hospital', openHours: '24/7', rating: 4.5, description: 'Comprehensive emergency medical services, including a level 1 trauma center. Open 24/7 for all medical emergencies.', verified: true },
-  { id: 'mock-4', name: 'Community Financial Aid', category: 'Financial Distress', lat: 34.0480, lon: -118.2550, contact: '211', type: 'Food Bank', openHours: 'Tue-Thu 10am-2pm', rating: 4.3, description: 'Offers food assistance, utility bill support, and financial literacy workshops to low-income families.', verified: false },
-  { id: 'mock-5', name: 'Regional Disaster Relief', category: 'Natural Disaster', lat: 34.0400, lon: -118.2600, contact: '1-800-733-2767', type: 'Relief Center', openHours: 'As needed', rating: 4.7, description: 'Coordinates emergency response for natural disasters, providing temporary shelter, food, and medical supplies.', verified: true },
-  { id: 'mock-6', name: 'Peaceful Minds Clinic', category: 'Mental Health Crisis', lat: 34.1522, lon: -118.3437, contact: '1-800-950-6264', type: 'Counselor', openHours: '24/7 Hotline', rating: 4.9, description: '24/7 crisis hotline and walk-in clinic for immediate mental health support. Confidential and free of charge.', verified: true },
-  { id: 'mock-7', name: 'Hope House', category: 'Domestic Violence', lat: 34.1600, lon: -118.3500, contact: '1-800-799-7233', type: 'Shelter', openHours: '24/7', rating: 4.6, description: 'Provides emergency shelter and long-term support for survivors of abuse, including children\'s programs.', verified: true },
-  { id: 'mock-8', name: 'Metro Urgent Care', category: 'Medical Emergency', lat: 33.9550, lon: -118.2050, contact: '911', type: 'Hospital', openHours: '24/7', rating: 4.2, description: 'Handles non-life-threatening medical emergencies with shorter wait times than a traditional ER.', verified: false },
-  { id: 'mock-9', name: 'General Support Line', category: 'Other', lat: 33.9850, lon: -118.2150, contact: '211', type: 'Hotline', openHours: '24/7', rating: 4.4, description: 'A general helpline connecting callers to a wide range of social services, from housing assistance to healthcare information.', verified: true },
+    // Mental Health Crisis - Juhu, Mumbai
+    { id: 'mock-1', name: 'The Mind Research Foundation', category: 'Mental Health Crisis', lat: 19.1120, lon: 72.8270, contact: '022-2660-5655', type: 'Counselor', openHours: 'Mon-Sat 10am-7pm', rating: 4.8, description: 'Offers professional counseling, therapy, and workshops for various mental health concerns. Confidential and supportive environment.', verified: true },
+    { id: 'mock-2', name: 'Mpower - The Foundation', category: 'Mental Health Crisis', lat: 19.1005, lon: 72.8421, contact: '1800-120-820050', type: 'Counselor', openHours: '24/7 Hotline', rating: 4.9, description: 'A holistic mental health institution providing clinical care, counseling, and support for individuals of all ages.', verified: true },
+    { id: 'mock-3', name: 'iCALL Psychosocial Helpline', category: 'Mental Health Crisis', lat: 19.1150, lon: 72.8300, contact: '022-2552-1111', type: 'Hotline', openHours: 'Mon-Sat 10am-8pm', rating: 4.7, description: 'A telephone and email-based counseling service run by TISS, offering free psychosocial support.', verified: true },
+
+    // Domestic Violence - Juhu, Mumbai
+    { id: 'mock-4', name: 'Majlis Legal Centre', category: 'Domestic Violence', lat: 19.1190, lon: 72.8475, contact: '022-2666-2394', type: 'Shelter', openHours: 'Mon-Fri 10am-5pm', rating: 4.9, description: 'Provides legal aid and social support to women survivors of violence. Located in nearby Andheri.', verified: true },
+    { id: 'mock-5', name: 'Stree Mukti Sanghatana (Juhu)', category: 'Domestic Violence', lat: 19.1050, lon: 72.8240, contact: '022-2413-2415', type: 'Shelter', openHours: '24/7', rating: 4.6, description: 'Provides counseling, shelter, and rehabilitation services for women in distress. (Mock Juhu location)', verified: true },
+
+    // Medical Emergency - Juhu, Mumbai
+    { id: 'mock-6', name: 'Dr. Balabhai Nanavati Hospital', category: 'Medical Emergency', lat: 19.0986, lon: 72.8395, contact: '022-2626-7500', type: 'Hospital', openHours: '24/7', rating: 4.7, description: 'A multi-speciality hospital with a comprehensive emergency department. Located in nearby Vile Parle.', verified: true },
+    { id: 'mock-7', name: 'Cooper Hospital', category: 'Medical Emergency', lat: 19.1035, lon: 72.8344, contact: '022-2620-7254', type: 'Hospital', openHours: '24/7', rating: 4.2, description: 'A major public hospital with a trauma center, serving the local community with emergency medical services.', verified: true },
+    { id: 'mock-8', name: 'Arogya Nidhi Hospital', category: 'Medical Emergency', lat: 19.1085, lon: 72.8286, contact: '022-2613-2489', type: 'Hospital', openHours: '24/7', rating: 4.4, description: 'A private hospital in Juhu offering emergency care and various medical specialities.', verified: false },
+
+    // Financial Distress - Juhu, Mumbai
+    { id: 'mock-9', name: 'Roti Bank by Mumbai Dabbawala', category: 'Financial Distress', lat: 19.0999, lon: 72.8301, contact: '86527-86527', type: 'Food Bank', openHours: 'Varies', rating: 4.8, description: 'An initiative to provide free meals to those in need. Contact for information on distribution points. (Mock Juhu point)', verified: true },
+    { id: 'mock-10', name: 'Akshaya Patra Foundation', category: 'Financial Distress', lat: 19.1250, lon: 72.8350, contact: '1800-425-8622', type: 'Food Bank', openHours: 'Mon-Fri 9am-5pm', rating: 4.9, description: 'Provides food relief and meals to vulnerable communities. (Nearby distribution center)', verified: true },
+
+    // Natural Disaster - Juhu, Mumbai
+    { id: 'mock-11', name: 'BMC K West Ward Office', category: 'Natural Disaster', lat: 19.1196, lon: 72.8436, contact: '022-2623-8098', type: 'Relief Center', openHours: 'As needed', rating: 4.3, description: 'The local municipal office coordinating disaster response for the Andheri West and Juhu area.', verified: true },
+    { id: 'mock-12', name: 'Juhu Beach Rescue Post', category: 'Natural Disaster', lat: 19.1020, lon: 72.8245, contact: '101', type: 'Relief Center', openHours: '24/7', rating: 4.5, description: 'Coordinates emergency response for coastal incidents and serves as a local point for disaster relief.', verified: true },
+
+    // Other - Juhu, Mumbai
+    { id: 'mock-13', name: 'Mumbai Police Helpline', category: 'Other', lat: 19.1074, lon: 72.8258, contact: '100', type: 'Hotline', openHours: '24/7', rating: 4.6, description: 'General emergency helpline for police assistance and public safety concerns.', verified: true },
 ];
 
 
@@ -193,7 +208,7 @@ function useSupportResources() {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
                     const data: SupportCenter[] = await response.json();
-                    setResources(data);
+                    setResources(data.length > 0 ? data : MOCK_SUPPORT_CENTERS);
                 } catch (e) {
                     console.error("Failed to fetch resources from backend, using fallback:", e);
                     setError("Could not load the latest resources. Showing available data.");
@@ -517,109 +532,129 @@ function MapView({ centers, userLocation, onMarkerClick, enableClustering = fals
     const map = useRef<any>(null);
 
     useEffect(() => {
-        if (map.current || !mapContainer.current) return;
-        
-        window.mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
-        map.current = new window.mapboxgl.Map({
-            container: mapContainer.current,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [userLocation.lon, userLocation.lat],
-            zoom: 12
-        });
-        
-        map.current.on('load', () => {
-             // Add user location marker
-            new window.mapboxgl.Marker({ color: '#E74C3C' })
-            .setLngLat([userLocation.lon, userLocation.lat])
-            .setPopup(new window.mapboxgl.Popup().setText("Your Location"))
-            .addTo(map.current);
+        if (map.current || !mapContainer.current) return; // Initialize only once
 
-            if (enableClustering) {
-                map.current.addSource('resources', {
-                    type: 'geojson',
-                    data: { type: 'FeatureCollection', features: [] },
-                    cluster: true,
-                    clusterMaxZoom: 14,
-                    clusterRadius: 50
-                });
-
-                map.current.addLayer({
-                    id: 'clusters',
-                    type: 'circle',
-                    source: 'resources',
-                    filter: ['has', 'point_count'],
-                    paint: {
-                        'circle-color': ['step', ['get', 'point_count'], '#51bbd6', 100, '#f1f075', 750, '#f28cb1'],
-                        'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40]
-                    }
-                });
-
-                map.current.addLayer({
-                    id: 'cluster-count',
-                    type: 'symbol',
-                    source: 'resources',
-                    filter: ['has', 'point_count'],
-                    layout: {
-                        'text-field': '{point_count_abbreviated}',
-                        'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-                        'text-size': 12
-                    }
-                });
-
-                map.current.addLayer({
-                    id: 'unclustered-point',
-                    type: 'circle',
-                    source: 'resources',
-                    filter: ['!', ['has', 'point_count']],
-                    paint: {
-                        'circle-color': '#11b4da',
-                        'circle-radius': 8,
-                        'circle-stroke-width': 2,
-                        'circle-stroke-color': '#fff'
-                    }
-                });
-                
-                // inspect a cluster on click
-                map.current.on('click', 'clusters', (e: any) => {
-                    const features = map.current.queryRenderedFeatures(e.point, { layers: ['clusters'] });
-                    const clusterId = features[0].properties.cluster_id;
-                    map.current.getSource('resources').getClusterExpansionZoom(clusterId, (err: any, zoom: number) => {
-                        if (err) return;
-                        map.current.easeTo({ center: features[0].geometry.coordinates, zoom: zoom });
-                    });
-                });
-
-                // When a click event occurs on a feature in the unclustered-point layer, open a popup at the location of the feature
-                map.current.on('click', 'unclustered-point', (e: any) => {
-                    const coordinates = e.features[0].geometry.coordinates.slice();
-                    const properties = e.features[0].properties;
-
-                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-                    }
-
-                    const popupHTML = `<div class="map-popup">
-                        <div class="map-popup-header">
-                            <strong>${properties.name}</strong>
-                            ${properties.verified ? `<span class="map-popup-verified"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Verified</span>` : ''}
-                        </div>
-                        <p>${properties.type} - ${parseFloat(properties.distance).toFixed(1)} km away</p>
-                        <button onclick="document.getElementById('resource-btn-${properties.id}').click()">View Details</button>
-                    </div>`;
-
-                    new window.mapboxgl.Popup()
-                        .setLngLat(coordinates)
-                        .setHTML(popupHTML)
-                        .addTo(map.current);
-                });
-
-                map.current.on('mouseenter', 'clusters', () => { map.current.getCanvas().style.cursor = 'pointer'; });
-                map.current.on('mouseleave', 'clusters', () => { map.current.getCanvas().style.cursor = ''; });
-                map.current.on('mouseenter', 'unclustered-point', () => { map.current.getCanvas().style.cursor = 'pointer'; });
-                map.current.on('mouseleave', 'unclustered-point', () => { map.current.getCanvas().style.cursor = ''; });
+        // CRITICAL FIX: The entire map initialization is now wrapped in a try-catch block.
+        // This prevents any error from the Mapbox library from crashing the entire application.
+        try {
+            if (typeof window.mapboxgl === 'undefined' || window.mapboxgl.accessToken === null) {
+                console.error("Mapbox GL JS not loaded or access token is missing.");
+                return;
             }
-        });
-    }, [userLocation, enableClustering]);
+
+            window.mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+            map.current = new window.mapboxgl.Map({
+                container: mapContainer.current,
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [userLocation.lon, userLocation.lat],
+                zoom: 12
+            });
+            
+            map.current.on('load', () => {
+                 // Add user location marker
+                new window.mapboxgl.Marker({ color: '#E74C3C' })
+                .setLngLat([userLocation.lon, userLocation.lat])
+                .setPopup(new window.mapboxgl.Popup().setText("Area of Focus"))
+                .addTo(map.current);
+
+                if (enableClustering) {
+                    map.current.addSource('resources', {
+                        type: 'geojson',
+                        data: { type: 'FeatureCollection', features: [] },
+                        cluster: true,
+                        clusterMaxZoom: 14,
+                        clusterRadius: 50
+                    });
+
+                    map.current.addLayer({
+                        id: 'clusters',
+                        type: 'circle',
+                        source: 'resources',
+                        filter: ['has', 'point_count'],
+                        paint: {
+                            'circle-color': ['step', ['get', 'point_count'], '#51bbd6', 100, '#f1f075', 750, '#f28cb1'],
+                            'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40]
+                        }
+                    });
+
+                    map.current.addLayer({
+                        id: 'cluster-count',
+                        type: 'symbol',
+                        source: 'resources',
+                        filter: ['has', 'point_count'],
+                        layout: {
+                            'text-field': '{point_count_abbreviated}',
+                            'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+                            'text-size': 12
+                        }
+                    });
+
+                    map.current.addLayer({
+                        id: 'unclustered-point',
+                        type: 'circle',
+                        source: 'resources',
+                        filter: ['!', ['has', 'point_count']],
+                        paint: {
+                            'circle-color': '#11b4da',
+                            'circle-radius': 8,
+                            'circle-stroke-width': 2,
+                            'circle-stroke-color': '#fff'
+                        }
+                    });
+                    
+                    map.current.on('click', 'clusters', (e: any) => {
+                        const features = map.current.queryRenderedFeatures(e.point, { layers: ['clusters'] });
+                        const clusterId = features[0].properties.cluster_id;
+                        map.current.getSource('resources').getClusterExpansionZoom(clusterId, (err: any, zoom: number) => {
+                            if (err) return;
+                            map.current.easeTo({ center: features[0].geometry.coordinates, zoom: zoom });
+                        });
+                    });
+
+                    map.current.on('click', 'unclustered-point', (e: any) => {
+                        const coordinates = e.features[0].geometry.coordinates.slice();
+                        const properties = e.features[0].properties;
+
+                        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                        }
+
+                        const popupHTML = `<div class="map-popup">
+                            <div class="map-popup-header">
+                                <strong>${properties.name}</strong>
+                                ${properties.verified ? `<span class="map-popup-verified"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Verified</span>` : ''}
+                            </div>
+                            <p>${properties.type} - ${parseFloat(properties.distance).toFixed(1)} km away</p>
+                            <button onclick="document.getElementById('resource-btn-${properties.id}').click()">View Details</button>
+                        </div>`;
+
+                        new window.mapboxgl.Popup()
+                            .setLngLat(coordinates)
+                            .setHTML(popupHTML)
+                            .addTo(map.current);
+                    });
+
+                    map.current.on('mouseenter', 'clusters', () => { map.current.getCanvas().style.cursor = 'pointer'; });
+                    map.current.on('mouseleave', 'clusters', () => { map.current.getCanvas().style.cursor = ''; });
+                    map.current.on('mouseenter', 'unclustered-point', () => { map.current.getCanvas().style.cursor = 'pointer'; });
+                    map.current.on('mouseleave', 'unclustered-point', () => { map.current.getCanvas().style.cursor = ''; });
+                }
+            });
+        } catch (error) {
+            console.error("MapView crashed during initialization:", error);
+            if (mapContainer.current) {
+                mapContainer.current.innerHTML = '<div class="map-error-state">Could not load map.</div>';
+            }
+        }
+
+        // Add a cleanup function to remove the map instance when the component unmounts.
+        return () => {
+            if (map.current) {
+                map.current.remove();
+                map.current = null;
+            }
+        };
+    }, []); // Run only once on component mount
 
     useEffect(() => {
         if (!map.current || !map.current.isStyleLoaded()) return;
@@ -642,15 +677,13 @@ function MapView({ centers, userLocation, onMarkerClick, enableClustering = fals
                 source.setData(geojsonData);
             }
         } else {
-            // Simple way to clear old markers: find and remove them.
             document.querySelectorAll('.mapboxgl-marker').forEach(marker => {
-                if (!marker.innerHTML.includes('E74C3C')) marker.remove();
+                // A bit of a hack to not remove the user's marker
+                if (marker.innerHTML.includes('E74C3C')) return;
+                marker.remove();
             });
 
             centers.forEach(center => {
-                const el = document.createElement('div');
-                el.className = 'marker';
-                
                 const popup = new window.mapboxgl.Popup({ offset: 25 })
                     .setHTML(
                         `<div class="map-popup">
@@ -663,7 +696,7 @@ function MapView({ centers, userLocation, onMarkerClick, enableClustering = fals
                         </div>`
                     );
 
-                new window.mapboxgl.Marker(el)
+                new window.mapboxgl.Marker()
                     .setLngLat([center.lon, center.lat])
                     .setPopup(popup)
                     .addTo(map.current);
@@ -672,37 +705,6 @@ function MapView({ centers, userLocation, onMarkerClick, enableClustering = fals
     }, [centers, onMarkerClick, enableClustering]);
 
     return <div ref={mapContainer} className="map-container" />;
-}
-
-function ListView({ centers, onSelect, highlightedId }: { centers: SupportCenter[], onSelect: (center: SupportCenter) => void, highlightedId: string | null }) {
-    return (
-        <div className="support-center-list">
-            {centers.map(center => (
-                <button 
-                    key={center.id}
-                    id={`resource-btn-${center.id}`}
-                    className={`support-center-card ${highlightedId === center.id ? 'highlighted' : ''}`}
-                    onClick={() => onSelect(center)}
-                >
-                    <div className="info">
-                        <div className="card-title-container">
-                             <h3>{center.name}</h3>
-                             {center.verified && (
-                                <span className="verified-badge-list">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                    Verified
-                                </span>
-                             )}
-                        </div>
-                        <p>{center.type} - {(center as SupportCenterWithDistance).distance?.toFixed(1)} km away</p>
-                    </div>
-                    <div className="card-arrow">
-                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-                    </div>
-                </button>
-            ))}
-        </div>
-    );
 }
 
 // --- FEEDBACK COMPONENTS ---
@@ -784,8 +786,6 @@ function FeedbackForm({ resource, onSubmitSuccess }: { resource: SupportCenter, 
 // --- MAIN PAGE COMPONENTS ---
 
 function HomePage({ onSelectCategory, onStartChat, onStartDemo }: { onSelectCategory: (category: Category) => void, onStartChat: () => void, onStartDemo: () => void }) {
-    const { location, error, status, getLocation } = useGeolocation();
-
     return (
         <main className="main-app-container">
             <header className="app-header">
@@ -794,8 +794,6 @@ function HomePage({ onSelectCategory, onStartChat, onStartDemo }: { onSelectCate
                 </div>
                 <p className="intro-text">Find immediate, verified support for any crisis.</p>
             </header>
-
-            <LocationStatusBanner status={status} error={error} onRetry={getLocation} />
 
             <section className="actions-container">
                 <button className="chat-now-btn" onClick={onStartChat}>
@@ -827,24 +825,147 @@ function HomePage({ onSelectCategory, onStartChat, onStartDemo }: { onSelectCate
     );
 }
 
-function CrisisDetailPage({ category, allResources, userLocation, onBack, onSelectResource }: { category: Category, allResources: SupportCenter[], userLocation: UserLocation | null, onBack: () => void, onSelectResource: (resource: SupportCenter) => void }) {
+function HelpfulArticles({ articles, isLoading }: { articles: string, isLoading: boolean}) {
+    if (isLoading) {
+        return (
+            <div className="helpful-articles-loading">
+                <Spinner />
+                <p>Finding helpful articles...</p>
+            </div>
+        );
+    }
+    
+    const parsedArticles = useMemo(() => {
+        try {
+            if (!articles || typeof articles !== 'string') return [];
+            return articles
+                .split('\n')
+                .map(item => {
+                    const trimmedItem = item.trim();
+                    if (!trimmedItem.startsWith('-') && !trimmedItem.startsWith('*')) {
+                        return null;
+                    }
+
+                    const content = trimmedItem.substring(1).trim();
+                    const titleMatch = content.match(/\*\*(.*?)\*\*/);
+                    
+                    if (titleMatch && titleMatch[1]) {
+                        const title = titleMatch[1];
+                        const description = content.replace(`**${title}**`, '').replace(':', '').trim();
+                        return { title, description };
+                    }
+                    
+                    const parts = content.split(':');
+                    if (parts.length > 1) {
+                        const title = parts[0].replace(/\*/g, '').trim();
+                        const description = parts.slice(1).join(':').trim();
+                        return { title, description };
+                    }
+
+                    return null;
+                })
+                .filter(Boolean);
+        } catch (error) {
+            console.error("Failed to parse helpful articles:", error, "Raw content:", articles);
+            return []; // Return empty array on any parsing error to prevent crashing.
+        }
+    }, [articles]);
+
+    if (parsedArticles.length === 0) {
+        if (!isLoading) {
+            return <div className="list-view-empty">No articles found at this time.</div>;
+        }
+        return null;
+    }
+
+    return (
+        <div className="helpful-articles">
+            {parsedArticles.map((article, index) => (
+                <div key={index} className="article-item">
+                    <strong>{article.title}</strong>
+                    <p>{article.description}</p>
+                </div>
+            ))}
+        </div>
+    );
+}
+
+function ListView({ centers, onSelect, highlightedId }: { centers: SupportCenterWithDistance[], onSelect: (center: SupportCenter) => void, highlightedId: string | null }) {
+    if (!Array.isArray(centers) || centers.length === 0) {
+        return <div className="list-view-empty">No nearby centers found for this category.</div>;
+    }
+
+    return (
+        <div className="support-center-list">
+            {centers.map(center => {
+                try {
+                    // Bulletproofing: Ensure center and its ID exist before rendering.
+                    if (!center || !center.id) return null; 
+
+                    return (
+                        <button 
+                            key={center.id}
+                            id={`resource-btn-${center.id}`}
+                            className={`support-center-card ${highlightedId === center.id ? 'highlighted' : ''}`}
+                            onClick={() => onSelect(center)}
+                            aria-label={`View details for ${center.name}, ${center.distance.toFixed(1)} kilometers away`}
+                        >
+                            <div className="info">
+                                <div className="card-title-container">
+                                     <h3>{center.name}</h3>
+                                     {center.verified && (
+                                        <span className="verified-badge-list">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                            Verified
+                                        </span>
+                                     )}
+                                </div>
+                                <p className="meta-info">{center.type} • {center.openHours}</p>
+                                <p className="distance-info">{center.distance.toFixed(1)} km away</p>
+                            </div>
+                            <div className="card-arrow">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                            </div>
+                        </button>
+                    );
+                } catch (error) {
+                    console.error("Failed to render a list view item:", error, "Item data:", center);
+                    return null; // Don't crash the entire list if one item is malformed.
+                }
+            })}
+        </div>
+    );
+}
+
+function CrisisDetailPage({ category, allResources, onBack, onSelectResource, onStartChat }: { category: Category, allResources: SupportCenter[], onBack: () => void, onSelectResource: (resource: SupportCenter) => void, onStartChat: (message?: string) => void }) {
     const [aiGuidance, setAiGuidance] = useState('');
     const [loadingGuidance, setLoadingGuidance] = useState(true);
+    const [additionalResources, setAdditionalResources] = useState('');
+    const [loadingAdditional, setLoadingAdditional] = useState(true);
     const [highlightedId, setHighlightedId] = useState<string | null>(null);
 
     const categoryInfo = CATEGORIES.find(c => c.name === category);
+    const juhuLocation: UserLocation = { lat: 19.1074, lon: 72.8258 };
 
-    // Filter and sort resources
+    const categoryTheme: Record<Category, string> = {
+        'Mental Health Crisis': 'theme-mental-health',
+        'Domestic Violence': 'theme-domestic-violence',
+        'Medical Emergency': 'theme-medical-emergency',
+        'Financial Distress': 'theme-financial-distress',
+        'Natural Disaster': 'theme-natural-disaster',
+        'Other': 'theme-other'
+    };
+
     const nearbyResources = useMemo(() => {
-        if (!userLocation) return [];
+        if (!allResources) return [];
         return allResources
             .filter(center => center.category === category)
             .map(center => ({
                 ...center,
-                distance: getDistance(userLocation.lat, userLocation.lon, center.lat, center.lon)
+                distance: getDistance(juhuLocation.lat, juhuLocation.lon, center.lat, center.lon)
             }))
             .sort((a, b) => a.distance - b.distance);
-    }, [allResources, category, userLocation]);
+    }, [allResources, category]);
 
     const nationalHelplines = useMemo(() => {
         return MOCK_SUPPORT_CENTERS.filter(center => 
@@ -856,7 +977,7 @@ function CrisisDetailPage({ category, allResources, userLocation, onBack, onSele
         const fetchGuidance = async () => {
             setLoadingGuidance(true);
             try {
-                const prompt = `I am facing a ${category}. What are the immediate first steps I should take? Provide 2-3 concise, actionable bullet points. Be calm and reassuring.`;
+                const prompt = `I am facing a ${category}. What are the immediate first steps I should take? Provide 2-3 concise, actionable bullet points. Be calm and reassuring. Wrap key actions in **bold** text.`;
                 const response = await ai.models.generateContent({
                   model: 'gemini-2.5-flash',
                   contents: prompt,
@@ -865,65 +986,103 @@ function CrisisDetailPage({ category, allResources, userLocation, onBack, onSele
             } catch (error) {
                 console.error("AI guidance fetch failed:", error);
                 setAiGuidance("Could not load AI guidance. Please focus on contacting the helplines below.");
+            } finally {
+                setLoadingGuidance(false);
             }
-            setLoadingGuidance(false);
+        };
+        const fetchAdditionalResources = async () => {
+            setLoadingAdditional(true);
+            try {
+                const prompt = `For someone facing a ${category} in India, suggest 2 helpful online articles or official government resources. Provide a title and a very brief (1-sentence) description for each. Format it as a simple list. Example: - **Resource Title:** Brief description.`;
+                const response = await ai.models.generateContent({
+                  model: 'gemini-2.5-flash',
+                  contents: prompt,
+                });
+                setAdditionalResources(response.text);
+            } catch (error) {
+                console.error("AI additional resources fetch failed:", error);
+                setAdditionalResources("");
+            } finally {
+                setLoadingAdditional(false);
+            }
         };
         fetchGuidance();
+        fetchAdditionalResources();
     }, [category]);
 
     return (
-        <div className="crisis-detail-page">
+        <div className={`crisis-detail-page ${categoryTheme[category] || 'theme-other'}`}>
             <ResultsHeader onBack={onBack} />
             <div className="crisis-content">
                 <header className="crisis-header">
-                    {categoryInfo?.icon}
-                    <h1>{category}</h1>
+                    <div className="category-icon-wrapper">{categoryInfo?.icon}</div>
+                    <h1>Help for {category}</h1>
+                    <p className="crisis-intro">You've taken a brave step by seeking help. Here are some immediate steps and resources to support you.</p>
                 </header>
-                
-                <section className="immediate-help-section">
-                    <h2>Immediate Help (National Hotlines)</h2>
-                    <div className="helpline-grid">
-                        {nationalHelplines.map(line => (
-                             <a href={`tel:${line.contact}`} key={line.id} className="helpline-card">
-                                <strong>{line.name}</strong>
-                                <span>{line.contact}</span>
-                                <p>{line.openHours}</p>
-                            </a>
-                        ))}
-                    </div>
-                </section>
 
                 <section className="ai-guidance-section">
                     <h2>AI-Powered First Steps</h2>
                      {loadingGuidance ? (
-                        <p className="loading-spinner-small">Getting guidance...</p>
+                        <div className="ai-guidance-loading">
+                            <Spinner/>
+                            <p>Getting guidance...</p>
+                        </div>
                     ) : (
-                        <p>{aiGuidance}</p>
+                        <p dangerouslySetInnerHTML={{ __html: aiGuidance.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br />') }} />
                     )}
                 </section>
+                
+                {nationalHelplines.length > 0 && (
+                    <section className="immediate-help-section">
+                        <h2>Immediate Help (National Hotlines)</h2>
+                        <div className="helpline-grid">
+                            {nationalHelplines.map(line => (
+                                 <a href={`tel:${line.contact}`} key={line.id} className="helpline-card">
+                                    <div>
+                                        <strong>{line.name}</strong>
+                                        <span>{line.contact}</span>
+                                    </div>
+                                    <div className="call-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.211-.998-.552-1.348l-5.452-5.452a2.25 2.25 0 00-3.182 0l-3.57 3.57a2.25 2.25 0 01-3.182 0L6.423 9.353a2.25 2.25 0 000-3.182l5.453-5.453C12.333 3.34 12.815 3.13 13.33 3.13h1.372c.621 0 1.125.504 1.125 1.125v2.25" /></svg>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </section>
+                )}
 
                  <section className="nearby-help-section">
-                    <h2>Nearby Support Centers</h2>
-                    {userLocation ? (
-                        nearbyResources.length > 0 ? (
-                             <div className="nearby-content">
-                                <MapView 
-                                    centers={nearbyResources} 
-                                    userLocation={userLocation}
-                                    onMarkerClick={setHighlightedId}
-                                />
-                                <ListView 
-                                    centers={nearbyResources} 
-                                    onSelect={onSelectResource}
-                                    highlightedId={highlightedId}
-                                />
-                            </div>
-                        ) : (
-                            <p>No nearby centers found for this category.</p>
-                        )
-                    ) : (
-                        <p>Enable location services to find help near you.</p>
-                    )}
+                    <h2>Support Centers in Juhu, Mumbai</h2>
+                    <div className="nearby-content">
+                        <div className="map-wrapper">
+                             <MapView 
+                                centers={nearbyResources} 
+                                userLocation={juhuLocation}
+                                onMarkerClick={setHighlightedId}
+                            />
+                        </div>
+                        <div className="list-wrapper">
+                             <ListView 
+                                centers={nearbyResources} 
+                                onSelect={onSelectResource}
+                                highlightedId={highlightedId}
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                <section className="additional-resources-section">
+                    <h2>Helpful Resources & Articles</h2>
+                    <HelpfulArticles articles={additionalResources} isLoading={loadingAdditional} />
+                </section>
+                
+                <section className="chat-cta-section">
+                     <h2>Feeling Overwhelmed?</h2>
+                     <p>Sometimes it helps to talk it through. Our AI responder is available 24/7 to listen and provide guidance in a safe, confidential space.</p>
+                     <button className="chat-now-btn" onClick={() => onStartChat(`I need help with a ${category}.`)}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.76 9.76 0 01-2.53-0.471l-5.459 2.729a.75.75 0 01-1.004-.823l1.543-4.596A9.037 9.037 0 013 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>
+                        Chat with AI Assistant
+                    </button>
                 </section>
             </div>
         </div>
@@ -2296,7 +2455,6 @@ function App() {
     const [appState, setAppState] = useState<AppState>({ view: 'splash' });
     const [notification, setNotification] = useState<string | null>(null);
     const { resources, loading: resourcesLoading, error: resourcesError } = useSupportResources();
-    const { location, error: locationError, status: locationStatus, getLocation } = useGeolocation();
     const { user, loading: authLoading, userRole } = useAuth();
     const isOnline = useNetworkStatus();
     
@@ -2371,9 +2529,9 @@ function App() {
                     <CrisisDetailPage
                         category={appState.category}
                         allResources={resources}
-                        userLocation={location}
                         onBack={() => setAppState({ view: 'home' })}
                         onSelectResource={(resource) => setAppState({ view: 'resourceDetail', resource })}
+                        onStartChat={(message) => setAppState({ view: 'chat', initialMessage: message })}
                     />
                 );
             case 'resourceDetail':
